@@ -1,0 +1,535 @@
+/* ═══════════════════════════════════════════════════════
+   TruthLens — Custom Stylesheet
+   Theme: Dark editorial / investigative journalism
+   Fonts: Bebas Neue (display) + Space Mono (data) + Lora (body)
+═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ── Global Reset ─────────────────────────────────────── */
+* { box-sizing: border-box; }
+
+.stApp {
+    background: #080b10;
+    background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(255,71,87,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(46,213,115,0.04) 0%, transparent 50%);
+    color: #e0e0e0;
+    font-family: 'Lora', Georgia, serif;
+}
+
+/* Hide Streamlit chrome */
+#MainMenu, footer, header { visibility: hidden; }
+.block-container { padding-top: 2rem !important; max-width: 1200px !important; }
+[data-testid="stSidebar"] { display: none; }
+
+/* ── Header ───────────────────────────────────────────── */
+.header-wrap {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    position: relative;
+}
+
+.header-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: #ff4757;
+    background: rgba(255,71,87,0.1);
+    border: 1px solid rgba(255,71,87,0.3);
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+}
+
+.header-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 10vw, 7rem);
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    line-height: 1;
+    margin: 0;
+    text-shadow: 0 0 60px rgba(255,71,87,0.2);
+}
+
+.header-title .accent {
+    color: #ff4757;
+    position: relative;
+}
+
+.header-sub {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: #888;
+    margin-top: 1rem;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+/* ── Section divider ──────────────────────────────────── */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,71,87,0.4), transparent);
+    margin: 2rem 0;
+}
+
+/* ── Mode selector ────────────────────────────────────── */
+.mode-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #666;
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+/* Mode buttons */
+.stButton > button {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.08em !important;
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    color: #aaa !important;
+    border-radius: 4px !important;
+    padding: 0.6rem 1rem !important;
+    transition: all 0.2s ease !important;
+}
+
+.stButton > button:hover {
+    background: rgba(255,71,87,0.12) !important;
+    border-color: rgba(255,71,87,0.5) !important;
+    color: #ff4757 !important;
+}
+
+/* Analyze button — special */
+div[data-testid="stButton"]:has(button[kind="primary"]) > button,
+.stButton > button[data-testid="baseButton-secondary"]:last-of-type {
+    background: #ff4757 !important;
+    color: white !important;
+    border: none !important;
+}
+
+/* Target analyze button by key pattern */
+[data-testid="stButton"] button {
+    transition: all 0.25s ease !important;
+}
+
+.active-mode-badge {
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: #ff4757;
+    letter-spacing: 0.15em;
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+/* ── Input areas ──────────────────────────────────────── */
+.input-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.input-sublabel {
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 0.8rem;
+}
+
+.char-count {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: #555;
+    text-align: right;
+    margin-top: 4px;
+}
+
+/* Streamlit textarea */
+.stTextArea textarea {
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 6px !important;
+    color: #d0d0d0 !important;
+    font-family: 'Lora', serif !important;
+    font-size: 0.95rem !important;
+    line-height: 1.7 !important;
+    transition: border-color 0.2s !important;
+}
+
+.stTextArea textarea:focus {
+    border-color: rgba(255,71,87,0.5) !important;
+    box-shadow: 0 0 20px rgba(255,71,87,0.08) !important;
+}
+
+/* File uploader */
+[data-testid="stFileUploader"] {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1.5px dashed rgba(255,255,255,0.12) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+}
+
+/* Analyze button override */
+button[data-testid="baseButton-secondary"] {
+    background: linear-gradient(135deg, #ff4757 0%, #c0392b 100%) !important;
+    color: white !important;
+    border: none !important;
+    font-family: 'Space Mono', monospace !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.15em !important;
+    padding: 0.85rem !important;
+    border-radius: 4px !important;
+    box-shadow: 0 4px 24px rgba(255,71,87,0.25) !important;
+}
+
+.analyzing-msg {
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: #ff4757;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+/* ── Result card ──────────────────────────────────────── */
+.result-card {
+    border-radius: 10px;
+    padding: 1.8rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+
+.result-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.verdict-fake {
+    background: linear-gradient(135deg, rgba(255,71,87,0.12) 0%, rgba(255,71,87,0.04) 100%);
+    border-color: rgba(255,71,87,0.3);
+}
+
+.verdict-fake::before {
+    background: radial-gradient(circle at 50% 0%, #ff4757, transparent 60%);
+    opacity: 0.15;
+}
+
+.verdict-real {
+    background: linear-gradient(135deg, rgba(46,213,115,0.12) 0%, rgba(46,213,115,0.04) 100%);
+    border-color: rgba(46,213,115,0.3);
+}
+
+.verdict-real::before {
+    background: radial-gradient(circle at 50% 0%, #2ed573, transparent 60%);
+    opacity: 0.1;
+}
+
+.result-mode-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.result-icon {
+    font-size: 2.8rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.result-verdict-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    letter-spacing: 0.1em;
+    line-height: 1;
+}
+
+.verdict-fake .result-verdict-label { color: #ff4757; }
+.verdict-real .result-verdict-label { color: #2ed573; }
+
+.result-confidence {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.result-bar-wrap {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.verdict-fake .result-bar { background: #ff4757; height: 100%; border-radius: 2px; }
+.verdict-real .result-bar { background: #2ed573; height: 100%; border-radius: 2px; }
+
+/* OCR preview */
+.ocr-preview {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    margin-top: 0.8rem;
+}
+
+.ocr-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: #666;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.ocr-text {
+    font-family: 'Lora', serif;
+    font-size: 0.82rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* ── Chart ────────────────────────────────────────────── */
+.chart-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #666;
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+/* ── Breakdown ────────────────────────────────────────── */
+.breakdown-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: #666;
+    margin-bottom: 0.6rem;
+}
+
+.breakdown-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.breakdown-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 5px;
+    padding: 0.6rem 0.9rem;
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.5;
+}
+
+/* Modality scores */
+.modality-scores {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    margin-top: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.mod-score-item { flex: 1; min-width: 80px; text-align: center; }
+
+.mod-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.mod-fake {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.mod-divider {
+    font-family: 'Space Mono', monospace;
+    color: #444;
+    font-size: 1.2rem;
+}
+
+/* ── Empty state ──────────────────────────────────────── */
+.empty-state {
+    text-align: center;
+    padding: 3.5rem 1rem;
+    border: 1.5px dashed rgba(255,255,255,0.08);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.01);
+}
+
+.empty-icon {
+    font-size: 3rem;
+    opacity: 0.3;
+    margin-bottom: 1rem;
+}
+
+.empty-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+    color: #444;
+}
+
+.empty-sub {
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    color: #333;
+    font-style: italic;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+}
+
+/* ── How It Works ─────────────────────────────────────── */
+.hiw-section {
+    padding: 2rem 0;
+}
+
+.hiw-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: #555;
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.hiw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.hiw-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 8px;
+    padding: 1.4rem;
+    position: relative;
+    transition: border-color 0.2s;
+}
+
+.hiw-card:hover {
+    border-color: rgba(255,71,87,0.25);
+}
+
+.hiw-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.8rem;
+    line-height: 1;
+}
+
+.hiw-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.hiw-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: #ddd;
+    margin-bottom: 0.5rem;
+}
+
+.hiw-desc {
+    font-family: 'Lora', serif;
+    font-size: 0.82rem;
+    color: #666;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.footer {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 1rem;
+}
+
+.footer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.15);
+}
+
+.footer-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: #444;
+    margin-top: 0.4rem;
+}
+
+.footer-team {
+    font-family: 'Lora', serif;
+    font-size: 0.82rem;
+    color: #555;
+    margin-top: 0.8rem;
+}
+
+.footer-guide {
+    font-family: 'Lora', serif;
+    font-size: 0.8rem;
+    color: #444;
+    font-style: italic;
+    margin-top: 0.3rem;
+}
+
+.footer-disclaimer {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: #333;
+    margin-top: 1.2rem;
+    letter-spacing: 0.04em;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+/* ── Streamlit overrides ──────────────────────────────── */
+.stProgress > div > div {
+    background: linear-gradient(90deg, #ff4757, #ff6b81) !important;
+}
+
+.stSpinner > div {
+    border-top-color: #ff4757 !important;
+}
+
+div[data-testid="stAlert"] {
+    background: rgba(255,71,87,0.1) !important;
+    border: 1px solid rgba(255,71,87,0.3) !important;
+    color: #ff4757 !important;
+}
